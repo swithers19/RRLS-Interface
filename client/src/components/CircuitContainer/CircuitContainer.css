@@ -1,0 +1,25 @@
+.circuitRenderCont {
+    height: 40vh;
+    border: 1px;
+    border-color: black;
+}
+
+.learningObj {
+    text-align: center;
+    padding: none;
+    height: inherit;
+}
+
+.objLeft {
+    text-align: right;
+}
+
+.objRight {
+    text-align: left;
+}
+
+#ArduinoNanoBoard {
+    position: absolute;
+    display: block;
+    width:100%;
+}
