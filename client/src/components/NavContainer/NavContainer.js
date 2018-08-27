@@ -43,7 +43,7 @@ class NavContainer extends Component {
                     </div>
                     <div className={contentWindow + ' nonMenu'}>
                     <Grid fluid={false}>
-                        <ContentContainer/>
+                        {/* <ContentContainer/> */}
                         <CircuitContainer/> 
                     </Grid> 
                     </div>

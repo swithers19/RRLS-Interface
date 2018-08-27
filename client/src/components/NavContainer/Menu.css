@@ -1,7 +1,7 @@
 #flyoutMenu {
     width: 20vw;
     height: 100vh;
-    background-color: rgb(23, 13, 41);
+    background-color: #191919;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,6 +10,9 @@
     z-index: 1000;
   }
    
+  #flyoutMenu h2 {
+    font-size: 1.5rem;
+  }
   #flyoutMenu.hidden {
       display: block!important;
     transform: translate3d(-20vw, 0, 0);
