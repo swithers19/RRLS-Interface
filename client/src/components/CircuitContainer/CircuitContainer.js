@@ -4,7 +4,7 @@ import socketIOClient from 'socket.io-client';
 import { SocketProvider } from 'socket.io-react';
 import LearningBoard from './Circuits/LearningBoard';
 import PeriphObj from './Peripherals/PeriphObj';
-
+import PeriphGenerator from './Peripherals/PeriphGenerator';
 import "./CircuitContainer.css";
 
 class CircuitContainer extends Component {
@@ -42,8 +42,8 @@ class CircuitContainer extends Component {
                     <Grid>
                         <div className='BoardContainer'>
                         <LearningBoard/>
-                            <PeriphObj periph={config.Peripherals[2]} class='left'/>
-                            <PeriphObj periph={config.Peripherals[3]} class='right'/>
+                            <PeriphGenerator Perphs={config.Peripherals}/>
+
                             <svg version='1.2' baseProfile='tiny' id='overlay' 
                             xmlns='http://www.w3.org/2000/svg' 
                             viewBox="0 0 1140 800" preserveAspectRatio="none"> </svg>
@@ -59,6 +59,26 @@ class CircuitContainer extends Component {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

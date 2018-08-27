@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ultraSensor from './../../../static/Peripherals/UltrasonicSensor.svg';
 import TempSensor from './../../../static/Peripherals/TMP36.svg';
-
+import LED from './../../../static/Peripherals/LED.svg';
 class PeriphObj extends Component {
     constructor (props, context) {
         super(props, context);
@@ -23,13 +23,26 @@ class PeriphObj extends Component {
             this.setState({svgFile: TempSensor});      
             this.setState({class: ' temp'});
         }
+        else if (this.props.periph.peripheralType === 'LED') {
+            this.setState({svgFile: LED});      
+            this.setState({class: ' led'});
+        }
         this.setState({name: this.props.periph.peripheralType});
         this.setState({id: this.props.periph.deviceID});
     }   
 
     render() {
+        var styling = {
+            top: String(this.props.numb*20)+'%'
+        }
         return (
-            <object data={this.state.svgFile} type="image/svg+xml" id={this.state.id} class={this.props.class+ this.state.class}></object>
+            <object 
+                data={this.state.svgFile} 
+                type="image/svg+xml" 
+                id={this.state.id} 
+                style = {styling}
+                class={this.props.class+ this.state.class}>
+            </object>
         )
     }
 }

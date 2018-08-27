@@ -33,15 +33,20 @@
 
 .ultra {
     position: absolute;
-    top:20%;
     height:15%;
 }
 
 .temp {
-    height:15%;
+    height:12%;
     position: absolute;
-    top:20%;
     margin-right: 5%;
+}
+
+.led {
+    position: absolute;
+    margin-left: 5%;
+
+    height: 10%;
 }
 
 .left {

@@ -8,7 +8,6 @@ class LearningBoard extends Component {
         this.boardRef = React.createRef();
     };
 
-
     render() {
         return (
             <object data={ArduinoB} type="image/svg+xml" id='Board' className='Board'></object>
