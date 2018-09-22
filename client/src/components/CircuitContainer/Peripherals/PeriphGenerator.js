@@ -4,6 +4,19 @@ import PeriphObj from './PeriphObj';
 class PeriphGenerator extends Component {
     constructor (props, context) {
         super(props, context);
+        this.findOverlay = this.findOverlay.bind(this);
+        this.state = {
+            linesObj: null
+        }
+    }
+    componentDidMount() {
+        setTimeout(()=> this.findOverlay(), 400);
+    }
+
+    findOverlay() {
+        var OverlayObj = document.getElementById('LineOverlay');
+        this.setState({linesObj:OverlayObj});
+        console.log(OverlayObj);
     }
 
     render() {
@@ -13,7 +26,7 @@ class PeriphGenerator extends Component {
             console.log(classLR);
             if (classLR === 'left') {
                 left++;
-                return(<PeriphObj periph={p} class={classLR} numb={left}/>);
+                return(<PeriphObj periph={p} class={classLR} numb={left} overlayObj={this.state.linesObj}/>);
             }
             else{
                 right++;

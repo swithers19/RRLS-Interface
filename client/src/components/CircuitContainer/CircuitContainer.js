@@ -6,6 +6,7 @@ import LearningBoard from './Circuits/LearningBoard';
 import PeriphObj from './Peripherals/PeriphObj';
 import PeriphGenerator from './Peripherals/PeriphGenerator';
 import "./CircuitContainer.css";
+import LineGenerator from './Lines/LineGenerator';
 
 class CircuitContainer extends Component {
     constructor (props, context) {
@@ -14,10 +15,10 @@ class CircuitContainer extends Component {
         this.state = {
             endpoint: 'http://localhost:5000',
             config: {
-                
             },
             dataFlag: false,
-            lines: []
+            lines: [],
+            pinLocationList:[]
         }
     }
     componentDidMount(e) {
@@ -27,11 +28,55 @@ class CircuitContainer extends Component {
             var temp = JSON.parse(data);
             this.setState({config:temp});
             this.setState({dataFlag:true});
+            setTimeout(()=> this.findPinLocations(), 500);
         }.bind(this));
-        var a = getLocation("Board","A6");
-        var b = getLocation("ultra","Vcc");
     }
     
+    findPinLocations() {
+        var x, y = 0;
+        var i = 0, j = 0;
+        var pinLocationList = [];
+        //get all peripheral objects
+        var svgParent = document.getElementsByClassName('periph');
+        try {
+            if (svgParent.length == 0) {
+                throw new Error('ContentDocument null');
+            }
+            for (i=0; i<svgParent.length; i++){
+                var item = {};
+                try {
+                    //get list of pins
+                    var svgChild = svgParent[i].contentDocument.rootElement.getElementsByClassName('pin');  
+                    if (svgChild == null | svgParent.length<1)  {
+                        throw new Error('ContentDocument null');
+                    }
+                    item["peripheral"] = svgParent[i].classList[1];
+                    item["pinLocations"] = []
+                    for (j=0;j<svgChild.length; j++){
+                        var pinObj = {};
+                        var svgRec = svgChild[j].getClientRects(); 
+                        x = svgParent[i].offsetLeft+svgRec[0].x+(svgRec[0].width/2);
+                        y = svgParent[i].offsetTop+svgRec[0].y+(svgRec[0].height/2);
+                        //get locations and append to object
+                        pinObj["pinName"] = svgChild[j].id;
+                        pinObj["x"] = x;
+                        pinObj["y"] = y;
+                        item["pinLocations"].push(pinObj);
+                    }
+                    pinLocationList.push(item);
+                }
+                catch(e) {
+                    console.log("Error");    
+                }
+            }
+        }
+        catch(e){
+            console.log(e);
+        }
+        this.setState({pinLocationList:pinLocationList});
+        //console.log(pinLocationList);
+    }
+
     render() {
         var config = this.state.config;
         if (this.state.dataFlag == true) {
@@ -41,12 +86,9 @@ class CircuitContainer extends Component {
                 <SocketProvider>
                     <Grid>
                         <div className='BoardContainer'>
-                        <LearningBoard/>
+                            <LearningBoard/> 
                             <PeriphGenerator Perphs={config.Peripherals}/>
-
-                            <svg version='1.2' baseProfile='tiny' id='overlay' 
-                            xmlns='http://www.w3.org/2000/svg' 
-                            viewBox="0 0 1140 800" preserveAspectRatio="none"> </svg>
+                            <LineGenerator ConfigPeriphs={config.Peripherals} pinLL={this.state.pinLocationList}/>
                         </div>
                     </Grid>
                 </SocketProvider>
@@ -54,65 +96,11 @@ class CircuitContainer extends Component {
         }
         else {
             return(
-                <div>ss</div>
+                <div>Waiting</div>
             );
         }
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Gets location relative to parent
-function getLocation(parent, subElem) {
-    var flag = 1; 
-    var x, y = 0;
-    var svgParent = document.getElementById(parent);
-    try {
-        var svgChild = svgParent.contentDocument.rootElement.getElementById(subElem);      
-        if (svgChild == null) {
-            throw new Error('ContentDocument null');
-        }
-        var svgRec = svgChild.getClientRects();
-        x = svgParent.offsetLeft+svgRec[0].x+(svgRec[0].width/2);
-        y = svgParent.offsetTop+svgRec[0].y+(svgRec[0].height/2) ;
-        console.log(x, y);
-    }
-    catch(e) {
-        setTimeout(getLocation, 100, parent, subElem);
-    }
-    var ret = [x, y, flag];
-    return ret;
-}
-
-//Draws a line from point to point
-function drawLine(x1, y1, x2, y2) {
-    var overlay = document.getElementById('overlay');
-    var elem = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-    var points = String(x1) + ',' + String(y1) +' ' +String(x2) + ','+String(y2);
-    elem.setAttribute('points', points);
-    elem.setAttribute('stroke', 'black');
-    elem.setAttribute('stroke-width', '2px');
-    overlay.appendChild(elem);
-}
 
 export default CircuitContainer;

@@ -9,9 +9,9 @@
 	<rect id="connector1pin" x="7.181" y="22.081" fill="none" width="2.16" height="1"/>
 	<rect id="connector2pin" x="14.367" y="22.081" fill="none" width="2.16" height="1"/>
 	
-	<line  id="connector0leg" stroke-linecap="round" x1="1.08" y1="24.081" x2="1.08" y2="31.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
-	<line  id="connector1leg" stroke-linecap="round" x1="8.261" y1="24.081" x2="8.261" y2="31.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
-	<line  id="connector2leg" stroke-linecap="round" x1="15.447" y1="24.081" x2="15.447" y2="31.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
+	<line  id="Vcc" class="pin" stroke-linecap="round" x1="1.08" y1="24.081" x2="1.08" y2="24.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
+	<line  id="Signal" class="pin" stroke-linecap="round" x1="8.261" y1="24.081" x2="8.261" y2="24.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
+	<line  id="Gnd" class="pin" stroke-linecap="round" x1="15.447" y1="24.081" x2="15.447" y2="24.259" stroke="#8C8C8C" fill="none" stroke-width="2.16" />
 
 
 	<rect id="rect9506" x="7.178" y="14.731" fill="#8C8C8C" width="2.154" height="9.351"/>

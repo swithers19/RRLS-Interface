@@ -10,10 +10,15 @@ class PeriphObj extends Component {
             name: '',
             svgFile: '',
             id: '',
-            class:''
+            class:'',
+            LineReference:null
         }
     };
-
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.LineReference != this.props.overlayObj) {
+            this.setState({LineReference:this.props.overlayObj});
+        }
+    }
     componentWillMount() {
         if (this.props.periph.peripheralType === 'Ultrasonic Sensor') {
             this.setState({svgFile: ultraSensor});      
@@ -31,20 +36,30 @@ class PeriphObj extends Component {
         this.setState({id: this.props.periph.deviceID});
     }   
 
+    toggleLineVisibility(event) {
+        //var overlay = this.state.LineReference;
+        console.log('here');
+    }
+
     render() {
         var styling = {
             top: String(this.props.numb*20)+'%'
         }
+
         return (
+
             <object 
                 data={this.state.svgFile} 
                 type="image/svg+xml" 
                 id={this.state.id} 
                 style = {styling}
-                class={this.props.class+ this.state.class}>
+                class={this.props.class+ this.state.class+ " periph"}> 
             </object>
+            </div>
         )
     }
 }
+
+
 
 export default PeriphObj;

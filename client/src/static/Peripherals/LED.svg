@@ -8,8 +8,8 @@
 	<rect id="connector0pin" x="4.793" y="35.307" fill="none" width="2.989" height="1"/>
 	<rect id="connector1pin" x="14.793" y="35.307" fill="none" width="2.992" height="1"/>
 
-	<line  id="connector0leg" stroke-linecap="round" x1="6.287" y1="40.565" x2="6.287" y2="74.754" stroke="#8C8C8C" fill="none" stroke-width="2.988" />
-	<line  id="connector1leg" stroke-linecap="round" x1="16.29" y1="40.565" x2="16.29" y2="74.754" stroke="#8C8C8C" fill="none" stroke-width="2.988" />
+	<line  id="Signal" class="pin" stroke-linecap="round" x1="6.287" y1="40.565" x2="6.287" y2="40.654" stroke="#8C8C8C" fill="none" stroke-width="2.988" />
+	<line  id="Gnd" class="pin" stroke-linecap="round" x1="16.29" y1="40.565" x2="16.29" y2="40.654" stroke="#8C8C8C" fill="none" stroke-width="2.988" />
 
 	<rect x="4.793" y="26.916" fill="#8C8C8C" width="2.988" height="13.649"/>
 	<path fill="#8C8C8C" d="M17.784,40.565c0-1.63-1.479-2.92-2.9-4.155c-0.578-0.51-1.666-1.391-1.666-1.979v-7.598h-3.002v8.028

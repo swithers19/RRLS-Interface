@@ -544,10 +544,10 @@
 		<circle id="D10" fill="none" stroke="#9A916C" stroke-width="1.224" cx="3.6" cy="97.2" r="1.908"/>
 		<circle id="D11" fill="none" stroke="#9A916C" stroke-width="1.224" cx="3.6" cy="104.4" r="1.908"/>
 		<circle id="D12" fill="none" stroke="#9A916C" stroke-width="1.224" cx="3.6" cy="111.6" r="1.908"/>
-		<circle id="AVin" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="10.8" r="1.908"/>
+		<circle id="Vin" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="10.8" r="1.908"/>
 		<circle id="AGnd" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="18" r="1.908"/>
-		<circle id="AReset" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="25.2" r="1.908"/>
-		<circle id="A5V" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="32.4" r="1.908"/>
+		<circle id="Reset" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="25.2" r="1.908"/>
+		<circle id="Vcc" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="32.4" r="1.908"/>
 		<circle id="A7" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="39.6" r="1.908"/>
 		<circle id="A6" fill="none" stroke="#9A916C" stroke-width="1.224" cx="46.8" cy="46.8" r="1.908"/>
 		<line id="A6Line" class="A6 line lineConnector" fill="none" x1="46.8" y1="46.8" x2="46.8" y2="46.8"/>
