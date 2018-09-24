@@ -18,6 +18,11 @@ client.on('connect', function () {
           console.log('successful subscribe');
         }
       })
+      client.subscribe('/RRLSsamW/feedback', function (err) {
+        if (!err) {
+          console.log('successful subscribe');
+        }
+      })
   });
 
 client.on('message', (topic, message) => {
@@ -26,7 +31,8 @@ client.on('message', (topic, message) => {
         socket.emit(topic.toString(), message.toString());
         console.log(message.toString());
         break;
-      case '/RRLSsamW/debug':
+      case '/RRLSsamW/feedback':
+        socket.emit(topic.toString(), message.toString());
         console.log(message.toString());
         break;
     }

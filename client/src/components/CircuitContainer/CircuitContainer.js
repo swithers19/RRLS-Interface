@@ -18,7 +18,8 @@ class CircuitContainer extends Component {
             },
             dataFlag: false,
             lines: [],
-            pinLocationList:[]
+            pinLocationList:[],
+            feedback:null
         }
     }
     componentDidMount(e) {
@@ -29,6 +30,11 @@ class CircuitContainer extends Component {
             this.setState({config:temp});
             this.setState({dataFlag:true});
             setTimeout(()=> this.findPinLocations(), 500);
+        }.bind(this));
+        socket.on('/RRLSsamW/feedback', function(data) {
+            var temp = JSON.parse(data);
+            this.setState({feedback:temp});
+
         }.bind(this));
     }
     
@@ -87,7 +93,7 @@ class CircuitContainer extends Component {
                     <Grid>
                         <div className='BoardContainer'>
                             <LearningBoard/> 
-                            <PeriphGenerator Perphs={config.Peripherals}/>
+                            <PeriphGenerator Perphs={config.Peripherals} feedback={this.state.feedback}/>
                             <LineGenerator ConfigPeriphs={config.Peripherals} pinLL={this.state.pinLocationList}/>
                         </div>
                     </Grid>

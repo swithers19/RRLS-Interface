@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import PeriphObj from './PeriphObj';
+import { isNullOrUndefined } from 'util';
 
 class PeriphGenerator extends Component {
     constructor (props, context) {
         super(props, context);
         this.findOverlay = this.findOverlay.bind(this);
         this.state = {
-            linesObj: null
+            linesObj: null,
+            feedback: Array(8).fill(0)
         }
     }
     componentDidMount() {
         setTimeout(()=> this.findOverlay(), 400);
+    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if (JSON.stringify(prevState.feedback) !== JSON.stringify(nextProps.feedback)) {
+            return({feedback:nextProps.feedback});
+        }
     }
 
     findOverlay() {
@@ -21,16 +28,21 @@ class PeriphGenerator extends Component {
 
     render() {
         var left = 0, right = 0;
-        var x = this.props.Perphs.map(p => {
+        var feedbackValidated = Array(8).fill(0);
+        if (this.state.feedback !== null){
+            feedbackValidated = this.state.feedback.list
+            console.log(feedbackValidated)
+        }
+        var x = this.props.Perphs.map((p, i) => {
             var classLR = getRight(p.peripheralType);
             console.log(classLR);
             if (classLR === 'left') {
                 left++;
-                return(<PeriphObj periph={p} class={classLR} numb={left} overlayObj={this.state.linesObj}/>);
+                return(<PeriphObj feedback={feedbackValidated[i]} periph={p} class={classLR} numb={left} overlayObj={this.state.linesObj}/>);
             }
             else{
                 right++;
-                return(<PeriphObj periph={p} class={classLR} numb={right}/>); 
+                return(<PeriphObj feedback={feedbackValidated[i]} periph={p} class={classLR} numb={right}/>); 
             }
         });
         return (x);
