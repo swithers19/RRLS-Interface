@@ -102,7 +102,7 @@ class CircuitContainer extends Component {
         }
         else {
             return(
-                <div>Waiting</div>
+                <div>Please connect your device and ensure the Wifi is Working</div>
             );
         }
     }

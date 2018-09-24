@@ -5,7 +5,7 @@ import MenuButton from './MenuButton';
 import Menu from './Menu';
 import CircuitContainer from './../CircuitContainer/CircuitContainer';
 import ContentContainer from './../ContentContainer/ContentContainer';
-
+import menu2 from './Menu2';
 class NavContainer extends Component {
     constructor(props, context) {
         super(props, context);   
@@ -43,7 +43,6 @@ class NavContainer extends Component {
                     </div>
                     <div className={contentWindow + ' nonMenu'}>
                     <Grid fluid={false}>
-                        {/* <ContentContainer/> */}
                         <CircuitContainer/> 
                     </Grid> 
                     </div>

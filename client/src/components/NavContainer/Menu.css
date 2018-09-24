@@ -10,8 +10,15 @@
     z-index: 1000;
   }
    
-  #flyoutMenu h2 {
+  #flyoutMenu .dropdownGroup {
+    margin-top:10px;
+    margin-left:10%;
+    margin-right:10%;
+  }
+
+  #flyoutMenu .menuItem {
     font-size: 1.5rem;
+    background-color: transparent;
   }
   #flyoutMenu.hidden {
       display: block!important;
@@ -23,7 +30,7 @@
     overflow: hidden;
   }
    
-  #flyoutMenu h2 a {
+  #flyoutMenu .menuItem {
     color: #FFFFFF;
     margin-left: 15px;
     text-decoration: none;
