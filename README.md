@@ -18,7 +18,7 @@ There are 4 fundamental sub-systems and 2 user groups. Users are a student which
 
 ![A picture of the RRLS user interface explaining different features](https://raw.githubusercontent.com/swithers19/RRLS-Interface/master/docs/userInterface.png)
 
-The user interface provides feedback to a student. Visual, representative feedback is provided in an engaging manner to promote students acting on issues raised by mentor. This is better visualised in the live demo which can be downloaded in the docs called systemDemo.mov.
+The user interface provides feedback to a student. Visual, representative feedback is provided in an engaging manner to promote students acting on issues raised by mentor. This is better visualised in the live demo which can be downloaded from docs/systemDemo.mov.
 
 For other more on the other subsystems, navigate to:
 
